@@ -131,6 +131,22 @@
     border: 3px solid #0077cc;
     border-radius: 8px;
   }
+
+   #preferences {
+    background-color: #fffbe6;
+    padding: 20px;
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #preferences select,
+  #preferences button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
 </style>
 </head>
 <body>
@@ -281,6 +297,26 @@
   </form>
 </section>
 
+<br><br><br>
+
+<section id="preferences">
+  <h2>🎯 Select Your Preferred Event Type</h2>
+  
+  <select id="eventTypeSelect">
+    <option value="">--Choose an Event--</option>
+    <option value="Music">Music Concert</option>
+    <option value="Art">Art Workshop</option>
+    <option value="Sports">Sports Tournament</option>
+    <option value="Tech">Tech Meetup</option>
+  </select>
+
+  <p id="savedPref" style="color: green;"></p>
+
+  <button onclick="savePreference()">💾 Save Preference</button>
+  <button onclick="clearPreference()">🗑️ Clear Preferences</button>
+</section>
+
+
 
 <script>
   function showConfirmation(event) {
@@ -341,6 +377,39 @@
       return "⚠️ You have unsaved changes. Are you sure you want to leave?";
     }
   };
+
+  const selectBox = document.getElementById("eventTypeSelect");
+  const savedPrefDisplay = document.getElementById("savedPref");
+
+  // Load saved preference on page load
+  window.onload = function () {
+    const saved = localStorage.getItem("preferredEvent");
+    if (saved) {
+      selectBox.value = saved;
+      savedPrefDisplay.textContent = `Your saved preference: ${saved}`;
+    }
+  };
+
+  // Save preference to localStorage
+  function savePreference() {
+    const selected = selectBox.value;
+    if (selected) {
+      localStorage.setItem("preferredEvent", selected);
+      sessionStorage.setItem("sessionPref", selected); // Optional
+      savedPrefDisplay.textContent = `Saved: ${selected}`;
+    } else {
+      alert("Please select an event type first.");
+    }
+  }
+
+  // Clear preferences from both storages
+  function clearPreference() {
+    localStorage.removeItem("preferredEvent");
+    sessionStorage.clear();
+    selectBox.value = "";
+    savedPrefDisplay.textContent = "Preferences cleared!";
+  }
+
 </script>
 
 

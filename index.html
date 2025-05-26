@@ -113,6 +113,24 @@
     cursor: pointer;
   }
 
+   #videoInvite {
+    background-color: #e6f9ff;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 30px auto;
+    width: 60%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  #videoInvite form input {
+    padding: 8px;
+    margin: 8px 0;
+  }
+
+  video {
+    border: 3px solid #0077cc;
+    border-radius: 8px;
+  }
 </style>
 </head>
 <body>
@@ -243,6 +261,26 @@
   <p><strong>Double-click to zoom:</strong></p>
   <img src="img/event1.jpg" alt="Event Photo" id="eventImage" ondblclick="enlargeImage()" width="200" style="border: 2px solid #000;">
 </section>
+<br><br><br>
+<!-- Video Invite Section -->
+<section id="videoInvite">
+  <h2>You're Invited! 🎥</h2>
+
+  <video id="promoVideo" width="480" controls oncanplay="videoReadyMessage()">
+    <source src="event-promo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p id="videoStatus" style="color: green; font-weight: bold;"></p>
+
+  <br><br>
+  <form id="importantForm">
+    <label>Name: <input type="text" id="nameInput" required></label><br><br>
+    <label>Email: <input type="email" id="emailInput" required></label><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</section>
+
 
 <script>
   function showConfirmation(event) {
@@ -286,7 +324,23 @@
     const text = document.getElementById("feedbackText").value;
     document.getElementById("charCount").textContent = text.length;
   }
+  
+  function videoReadyMessage() {
+    document.getElementById("videoStatus").textContent = "🎉 Video ready to play!";
+  }
 
+  let formSubmitted = false;
+
+  document.getElementById("importantForm").addEventListener("submit", function(event) {
+    formSubmitted = true;
+    alert("✅ Form submitted successfully!");
+  });
+
+  window.onbeforeunload = function () {
+    if (!formSubmitted) {
+      return "⚠️ You have unsaved changes. Are you sure you want to leave?";
+    }
+  };
 </script>
 
 

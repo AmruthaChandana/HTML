@@ -147,6 +147,23 @@
     padding: 10px;
     font-size: 16px;
   }
+
+  #geoSection {
+    background-color: #f0f9ff;
+    padding: 20px;
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  #geoSection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -316,6 +333,14 @@
   <button onclick="clearPreference()">🗑️ Clear Preferences</button>
 </section>
 
+<br><br><br>
+
+<section id="geoSection">
+  <h2>📍 Find Events Near You</h2>
+  <button onclick="findNearbyEvents()">Find Nearby Events</button>
+  <p id="locationOutput" style="color: darkgreen; font-weight: bold;"></p>
+  <p id="errorOutput" style="color: red;"></p>
+</section>
 
 
 <script>
@@ -408,6 +433,47 @@
     sessionStorage.clear();
     selectBox.value = "";
     savedPrefDisplay.textContent = "Preferences cleared!";
+  }
+
+  function findNearbyEvents() {
+    const locationOutput = document.getElementById("locationOutput");
+    const errorOutput = document.getElementById("errorOutput");
+
+    // Clear previous results
+    locationOutput.textContent = "";
+    errorOutput.textContent = "";
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError, {
+        enableHighAccuracy: true,
+        timeout: 10000, // 10 seconds
+        maximumAge: 0
+      });
+    } else {
+      errorOutput.textContent = "Geolocation is not supported by this browser.";
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude.toFixed(5);
+      const lon = position.coords.longitude.toFixed(5);
+      locationOutput.textContent = `✅ Your Coordinates: Latitude ${lat}, Longitude ${lon}`;
+    }
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          errorOutput.textContent = "❌ Permission denied. Please allow location access.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          errorOutput.textContent = "❌ Location info unavailable.";
+          break;
+        case error.TIMEOUT:
+          errorOutput.textContent = "⏳ Request timed out. Try again.";
+          break;
+        default:
+          errorOutput.textContent = "⚠️ Unknown error.";
+      }
+    }
   }
 
 </script>

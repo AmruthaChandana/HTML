@@ -7,11 +7,51 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      list-style: 1.6;
+      margin: 0;
+      padding: 0;
     }
-    #welcomeBanner {
-      background-color: #007BFF; /* blue */
+
+    nav{
+      background-color: #343a40;
+      padding: 10px;
+      text-align: center;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+    nav ul li a {
       color: white;
-      padding: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    #events{
+      padding-left: 5%;
+      padding-top: 5%;
+    }
+    #contact
+    {
+      padding-left: 5%;
+      padding-top: 2%;
+    }
+    #home{
+      padding: 5%;
+    }
+
+    #welcomeBanner {
+      background-color: #007BFF; 
+      color: white;
+      padding: 5%;
       text-align: center;
       font-size: 24px;
     }
@@ -24,148 +64,147 @@
     margin: 20px auto;
     border-collapse: collapse;
     text-align: center;
-  }
+    }
 
-  caption {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+    caption {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .event-img {
+      width: 180px;
+      height: 120px;
+      border: 3px solid #011101;
+      border-radius: 8px;
+      padding: 4px;
+    }
+    td {
+      padding: 10px;
+    }
 
-  .event-img {
-    width: 180px;
-    height: 120px;
-    border: 3px solid #011101;
-    border-radius: 8px;
-    padding: 4px;
-  }
+    #registration {
+      background-color: #f0f8ff;
+      padding: 20px;
+      margin: 30px auto;
+      width: 60%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
 
-  td {
-    padding: 10px;
-  }
+    #registration label {
+      display: inline-block;
+      width: 140px;
+      font-weight: bold;
+    }
 
-  #registration {
-    background-color: #f0f8ff;
-    padding: 20px;
-    margin: 30px auto;
-    width: 60%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
+    #registration input,
+    #registration select,
+    #registration textarea {
+      width: 60%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-  #registration label {
-    display: inline-block;
-    width: 140px;
-    font-weight: bold;
-  }
+    #registration button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-  #registration input,
-  #registration select,
-  #registration textarea {
-    width: 60%;
-    padding: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    #registration button:hover {
+      background-color: #218838;
+    }
 
-  #registration button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    output {
+      color: green;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
 
-  #registration button:hover {
-    background-color: #218838;
-  }
+    #feedback {
+      background-color: #fff8dc;
+      padding: 20px;
+      margin: 30px auto;
+      width: 60%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
 
-  output {
-    color: green;
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-  }
+    #feedback label {
+      font-weight: bold;
+    }
 
-  #feedback {
-    background-color: #fff8dc;
-    padding: 20px;
-    margin: 30px auto;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  }
+    #feedback input, #feedback select, #feedback textarea {
+      width: 60%;
+      padding: 8px;
+      margin: 6px 0;
+      border-radius: 4px;
+    }
 
-  #feedback label {
-    font-weight: bold;
-  }
+    #feedback img {
+      cursor: pointer;
+    }
 
-  #feedback input, #feedback select, #feedback textarea {
-    width: 60%;
-    padding: 8px;
-    margin: 6px 0;
-    border-radius: 4px;
-  }
+    #videoInvite {
+      background-color: #e6f9ff;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px auto;
+      width: 60%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-  #feedback img {
-    cursor: pointer;
-  }
+    #videoInvite form input {
+      padding: 8px;
+      margin: 8px 0;
+    }
 
-   #videoInvite {
-    background-color: #e6f9ff;
-    padding: 25px;
-    border-radius: 12px;
-    margin: 30px auto;
-    width: 60%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+    video {
+      border: 3px solid #0077cc;
+      border-radius: 8px;
+    }
 
-  #videoInvite form input {
-    padding: 8px;
-    margin: 8px 0;
-  }
+    #preferences {
+      background-color: #fffbe6;
+      padding: 20px;
+      margin: 30px auto;
+      width: 60%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
 
-  video {
-    border: 3px solid #0077cc;
-    border-radius: 8px;
-  }
+    #preferences select,
+    #preferences button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
 
-   #preferences {
-    background-color: #fffbe6;
-    padding: 20px;
-    margin: 30px auto;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  }
+    #geoSection {
+      background-color: #f0f9ff;
+      padding: 20px;
+      margin: 30px auto;
+      width: 60%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
 
-  #preferences select,
-  #preferences button {
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  #geoSection {
-    background-color: #f0f9ff;
-    padding: 20px;
-    margin: 30px auto;
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-    text-align: center;
-  }
-
-  #geoSection button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-</style>
+    #geoSection button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
   <!-- Navigation -->
   <nav>
@@ -173,7 +212,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="help.html" target="_blank">Help</a></li>
+      <li><a href="/help.html" target="_blank">Help</a></li>
     </ul>
   </nav>
 
@@ -184,29 +223,17 @@
       <h2>Welcome to the Community Portal</h2>
       <p>Discover and register for local events easily.</p>
     </section>
+     <!-- Welcome Banner -->
+      <div id="welcomeBanner">
+        Welcome to the Community Event Portal!
+        <p>
+          <span style="color: rgb(172, 27, 27); font-weight: bold;">Special Offer:</span> 
+          Get <span class="highlight">10% off</span> on your first registration!
+        </p>
+      </div>
 
-    <!-- Events Section -->
-    <section id="events">
-      <h2>Upcoming Events</h2>
-      <p>List of community events goes here.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Reach out to your local event coordinators.</p>
-    </section>
-  </main>
-<br><br><br>
-  <!-- Welcome Banner -->
-  <div id="welcomeBanner">
-    Welcome to the Community Event Portal!
-    <p>
-      <span style="color: rgb(172, 27, 27); font-weight: bold;">Special Offer:</span> 
-      Get <span class="highlight">10% off</span> on your first registration!
-    </p>
-  </div>
-<br><br><br>
+      
+    <br><br><br>
   <!-- Event Gallery -->
 <section id="events">
   <h2>Upcoming Events</h2>
@@ -230,6 +257,11 @@
 </section>
 <br><br><br>
 <!-- Event Registration Form -->
+ <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Reach out to your local event coordinators.</p>
+    </section>
 <section id="registration">
   <h2>Register for an Event</h2>
 
@@ -259,6 +291,8 @@
     <output id="confirmationMessage"></output>
   </form>
 </section>
+
+</main>
 <br><br><br>
 
 <!-- Event Feedback Section -->

@@ -66,6 +66,10 @@ Email: amruthayadav302004@gmail.com
 GitHub: AmruthaChandana
 
 --- 
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
 
 ## ⭐ If you liked this project, consider starring it on GitHub!
 

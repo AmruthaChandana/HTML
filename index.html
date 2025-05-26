@@ -89,6 +89,30 @@
     margin-top: 10px;
   }
 
+  #feedback {
+    background-color: #fff8dc;
+    padding: 20px;
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  }
+
+  #feedback label {
+    font-weight: bold;
+  }
+
+  #feedback input, #feedback select, #feedback textarea {
+    width: 60%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 4px;
+  }
+
+  #feedback img {
+    cursor: pointer;
+  }
+
 </style>
 </head>
 <body>
@@ -184,6 +208,41 @@
     <output id="confirmationMessage"></output>
   </form>
 </section>
+<br><br><br>
+
+<!-- Event Feedback Section -->
+<section id="feedback">
+  <h2>Event Feedback</h2>
+
+  <form>
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" onblur="validatePhone()" placeholder="Enter 10-digit number" required>
+    <span id="phoneError" style="color: red;"></span>
+    <br><br>
+
+    <label for="eventFee">Select Event:</label>
+    <select id="eventDropdown" onchange="showFee()">
+      <option value="">--Choose Event--</option>
+      <option value="Yoga - ₹200">Yoga Camp - ₹200</option>
+      <option value="Clean-up - ₹100">Clean-up Drive - ₹100</option>
+      <option value="Food Fest - ₹250">Food Festival - ₹250</option>
+    </select>
+    <p id="feeOutput"></p>
+    <br>
+
+    <label>Feedback:</label><br>
+    <textarea id="feedbackText" rows="4" cols="50" onkeydown="countCharacters()" placeholder="Type your feedback here..."></textarea>
+    <p><strong>Characters typed:</strong> <span id="charCount">0</span></p>
+    <br>
+
+    <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+    <p id="submitMsg" style="color: green;"></p>
+  </form>
+
+  <br>
+  <p><strong>Double-click to zoom:</strong></p>
+  <img src="img/event1.jpg" alt="Event Photo" id="eventImage" ondblclick="enlargeImage()" width="200" style="border: 2px solid #000;">
+</section>
 
 <script>
   function showConfirmation(event) {
@@ -193,6 +252,41 @@
     document.getElementById("confirmationMessage").textContent =
       `Thank you, ${name}, for registering! We’ll contact you soon.`;
   }
+
+  function validatePhone() {
+    const phone = document.getElementById("phone").value;
+    const errorSpan = document.getElementById("phoneError");
+    if (!/^\d{10}$/.test(phone)) {
+      errorSpan.textContent = "Invalid phone number!";
+    } else {
+      errorSpan.textContent = "";
+    }
+  }
+
+  function showFee() {
+    const event = document.getElementById("eventDropdown").value;
+    document.getElementById("feeOutput").textContent = "You selected: " + event;
+  }
+
+  function submitFeedback() {
+    document.getElementById("submitMsg").textContent = "✅ Feedback submitted! Thank you.";
+  }
+
+  function enlargeImage() {
+    const img = document.getElementById("eventImage");
+    if (img.width === 200) {
+      img.width = 400;
+    } else {
+      img.width = 200;
+    }
+  }
+
+
+  function countCharacters() {
+    const text = document.getElementById("feedbackText").value;
+    document.getElementById("charCount").textContent = text.length;
+  }
+
 </script>
 
 
